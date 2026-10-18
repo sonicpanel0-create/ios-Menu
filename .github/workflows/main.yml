@@ -1,3 +1,25 @@
-- name: Extract Project Zip
+name: Build iOS Dynamic Library
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Extract Project Zip
       run: |
-        unzip -o "FUCK S0N_MX BY HMOOD.zip"
+        unzip -o "FUCK S0N_MX BY HMOOD.zip" -d extracted_files
+
+    - name: Build Project
+      run: |
+        PROJ_PATH=$(find extracted_files -name "*.xcodeproj" -maxdepth 2 | head -n 1)
+        PROJ_DIR=$(dirname "$PROJ_PATH")
+        cd "$PROJ_DIR"
+        xcodebuild -project HMOOD_FUCK_MAX.xcodeproj -scheme HMOOD_FUCK_MAX -configuration Release -sdk iphoneos CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO clean build
