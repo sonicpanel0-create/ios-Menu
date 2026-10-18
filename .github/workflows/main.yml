@@ -11,4 +11,4 @@ jobs:
 
     - name: Build Project
       run: |
-        xcodebuild -project HMOOD_FUCK_MAX.xcodeproj -scheme HMOOD_FUCK_MAX -configuration Release -sdk iphoneos CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO build
+        xcodebuild -project HMOOD_FUCK_MAX.xcodeproj -scheme HMOOD_FUCK_MAX -configuration Release -sdk iphoneos CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO clean build
