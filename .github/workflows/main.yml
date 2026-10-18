@@ -1,0 +1,14 @@
+name: Build iOS dylib
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Build Project
+      run: |
+        xcodebuild -project HMOOD_FUCK_MAX.xcodeproj -scheme HMOOD_FUCK_MAX -configuration Release -sdk iphoneos build
